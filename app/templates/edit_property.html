@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Edit Property</title>
+  </head>
+  <body>
+    <h1>Edit Property</h1>
+    <form method="POST">
+      <label>Title:</label>
+      <input
+        type="text"
+        name="title"
+        value="{{ property.title }}"
+        required
+      /><br />
+
+      <label>Bedrooms:</label>
+      <input
+        type="number"
+        name="bedrooms"
+        value="{{ property.bedrooms }}"
+        required
+      /><br />
+
+      <label>Bathrooms:</label>
+      <input
+        type="number"
+        name="bathrooms"
+        value="{{ property.bathrooms }}"
+        required
+      /><br />
+
+      <label>Available From:</label>
+      <input
+        type="text"
+        name="available_from"
+        value="{{ property.available_from }}"
+        required
+      /><br />
+
+      <label>Price:</label>
+      <input
+        type="number"
+        name="price"
+        value="{{ property.price }}"
+        required
+      /><br />
+
+      <label>Address:</label>
+      <input
+        type="text"
+        name="address"
+        value="{{ property.address }}"
+        required
+      /><br />
+
+      <label>Image URL:</label>
+      <input type="text" name="image" value="{{ property.image }}" /><br />
+
+      <button type="submit">Update Property</button>
+    </form>
+  </body>
+</html>

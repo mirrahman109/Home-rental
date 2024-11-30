@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Rental Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-50 text-gray-800">
+    <!-- Navbar -->
+    <header class="bg-white shadow-md border-b">
+      <div
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a href="#" class="text-2xl font-bold text-blue-500">ToletBD.</a>
+        <nav class="hidden md:flex space-x-6">
+          <a href="#" class="hover:text-blue-500">Home</a>
+          <a href="#" class="hover:text-blue-500">Listings</a>
+          <a href="#" class="hover:text-blue-500">Contact</a>
+          <a href="#" class="hover:text-blue-500">About Us</a>
+        </nav>
+        <!-- Hamburger Menu for Mobile -->
+        <button
+          class="md:hidden text-blue-500 focus:outline-none"
+          id="menu-toggle"
+        >
+          ☰
+        </button>
+      </div>
+      <!-- Mobile Menu -->
+      <div class="hidden bg-gray-100 md:hidden" id="mobile-menu">
+        <a href="#" class="block px-6 py-2 hover:bg-gray-200">Home</a>
+        <a href="#" class="block px-6 py-2 hover:bg-gray-200">Listings</a>
+        <a href="#" class="block px-6 py-2 hover:bg-gray-200">Contact</a>
+        <a href="#" class="block px-6 py-2 hover:bg-gray-200">About Us</a>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section
+      class="text-white bg-cover bg-center bg-no-repeat h-[500px] w-full relative"
+      style="
+        background-image: url('https://images.pexels.com/photos/3359912/pexels-photo-3359912.jpeg');
+      "
+    >
+      <div
+        class="container mx-auto h-full flex flex-col justify-start items-center"
+      >
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 text-center mt-7">
+          Find Your Dream Home
+        </h1>
+        <p class="text-lg md:text-xl mb-8 text-center">
+          Search and browse thousands of properties for rent and sale.
+        </p>
+        <!-- Search Bar -->
+        <form
+          class="flex flex-col md:flex-row items-center w-full max-w-2xl bg-white rounded-lg shadow-md overflow-hidden"
+          action="#listings"
+          method="GET"
+        >
+          <input
+            type="text"
+            name="location"
+            placeholder="Enter a city or neighborhood"
+            class="flex-grow px-4 py-3 text-gray-700 focus:outline-none"
+          />
+          <select
+            name="type"
+            class="px-4 py-3 text-gray-700 focus:outline-none border-l"
+          >
+            <option value="">All Types</option>
+            <option value="rent">For Rent</option>
+            <option value="sale">For Sale</option>
+          </select>
+          <button
+            type="submit"
+            class="bg-blue-500 text-white px-6 py-3 hover:bg-blue-600"
+          >
+            Search
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Listings Preview -->
+    <section id="listings" class="py-12">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-8">Featured Listings</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Card 1 -->
+          <div class="bg-white shadow-md rounded-lg overflow-hidden">
+            <img
+              src="https://via.placeholder.com/400x250"
+              alt="House"
+              class="w-full"
+            />
+            <div class="p-4">
+              <h3 class="text-xl font-semibold">Modern Apartment</h3>
+              <p class="text-gray-600 mt-2">$1,200/month</p>
+              <a
+                href="#"
+                class="mt-4 inline-block text-blue-500 hover:underline"
+                >View Details</a
+              >
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="bg-white shadow-md rounded-lg overflow-hidden">
+            <img
+              src="https://via.placeholder.com/400x250"
+              alt="House"
+              class="w-full"
+            />
+            <div class="p-4">
+              <h3 class="text-xl font-semibold">Cozy Family Home</h3>
+              <p class="text-gray-600 mt-2">$2,500/month</p>
+              <a
+                href="#"
+                class="mt-4 inline-block text-blue-500 hover:underline"
+                >View Details</a
+              >
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="bg-white shadow-md rounded-lg overflow-hidden">
+            <img
+              src="https://via.placeholder.com/400x250"
+              alt="House"
+              class="w-full"
+            />
+            <div class="p-4">
+              <h3 class="text-xl font-semibold">Luxury Villa</h3>
+              <p class="text-gray-600 mt-2">$5,000/month</p>
+              <a
+                href="#"
+                class="mt-4 inline-block text-blue-500 hover:underline"
+                >View Details</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- View More Button -->
+      <div class="text-center mt-8">
+        <a
+          href="#"
+          class="inline-block text-white bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-full shadow-md"
+        >
+          View More Listings
+        </a>
+      </div>
+    </section>
+
+    <!-- Cities Available Section -->
+    <section class="py-12 bg-gray-50">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-8">Cities Available</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {% for city, property_count in cities.items() %}
+          <div class="bg-white shadow-md rounded-lg p-4 text-center">
+            <h3 class="text-xl font-bold text-blue-500">{{ city }}</h3>
+            <p class="text-gray-600">
+              {{ property_count }} Properties Available
+            </p>
+            <a
+              href="/listings?city={{ city }}"
+              class="text-blue-500 hover:underline"
+              >Explore {{ city }}</a
+            >
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6">
+      <div class="container mx-auto text-center">
+        <p>&copy; 2024 RentEase. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile menu toggle
+      const menuToggle = document.getElementById("menu-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      menuToggle.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+    </script>
+  </body>
+</html>

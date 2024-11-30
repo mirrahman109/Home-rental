@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Listings - {{ city if city else "All Cities" }}</title>
+    <link href="https://cdn.tailwindcss.com" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="bg-white shadow-md">
+      <div
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a href="/" class="text-2xl font-bold text-blue-500">ToletBD.</a>
+      </div>
+    </header>
+
+    <section class="py-12">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold mb-8">
+          Properties in {{ city if city else "All Cities" }}
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {% for property in properties %}
+          <div class="bg-white shadow-md rounded-lg overflow-hidden">
+            <img
+              src="{{ property.image }}"
+              alt="{{ property.title }}"
+              class="w-full"
+            />
+            <div class="p-4">
+              <h3 class="text-xl font-semibold">{{ property.title }}</h3>
+              <p class="text-gray-600 mt-2">${{ property.price }}</p>
+              <a
+                href="#"
+                class="mt-4 inline-block text-blue-500 hover:underline"
+                >View Details</a
+              >
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
